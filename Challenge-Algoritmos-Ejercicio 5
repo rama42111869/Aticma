@@ -1,9 +1,13 @@
+//Para este ejercicio se me complicaba la logica en java, asi que lo hice en C.
+///Librerias
 #include <windows.h>
 #include <stdio.h>
 #include <stdlib.h>
 
+///Main
 int main(int argc, char *argv[])
 {
+///Variables y funciones llamadas
     int arr[100];
     int num;
     int i=0;
@@ -12,7 +16,7 @@ int main(int argc, char *argv[])
 return 0;
 }
 
-///funcion para cargar un arreglo
+///funcion para cargar un arreglo usando un bucle con repeticion
 int cargararreglo(int arr[],int validos)
 {
     int num,val=0,i=0;
@@ -27,7 +31,7 @@ int cargararreglo(int arr[],int validos)
     return val;
 }
 
-///funcion para buscar el menor
+///funcion para buscar el menor.  Esta recorre el arreglo hasta encontrar el menor, realizando comparaciones
 int buscarmenor(int arr[],int pos,int val)
 {
     int menor=arr[pos];
@@ -45,7 +49,7 @@ int buscarmenor(int arr[],int pos,int val)
     return menor;
 }
 
-///funcion para buscar el mayor
+///funcion para buscar el mayor Esta recorre el arreglo hasta encontrar el mayor, realizando comparaciones
 int buscarmayor(int arr[],int pos,int val)
 {
     int mayor=arr[pos];
@@ -71,10 +75,14 @@ void sumaarreglo(int arr[],int validos)
     {
         suma+=arr[i];
     }
+    ///Llamo a las otras funciones para realizar los calculos y/o operaciones faltantes
     int a=buscarmayor(arr,0,10);
+    ///Mayor
     printf("\nEl nro mayor es [%d] ",a);
     int b=buscarmenor(arr,0,10);
+    ///Menos
     printf("\nEl nro menor es [%d] ",b);
+    ///Sumas
     printf("\nLa suma de los elementos ingresados es= %d",suma);
     printf("\nLa suma de los elementos totales es= %d",suma+a+b);
 }
