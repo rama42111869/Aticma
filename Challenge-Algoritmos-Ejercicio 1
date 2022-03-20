@@ -4,24 +4,28 @@ import java.util.Scanner;
 public class Main {
 
 	private static Scanner in;
-
 	public static void main(String[] args) {
-
+		//Variables
 		int numero = 0,a=0,i=0,total;
 		String contraseña,contraseña2,nombre;
 		in = new Scanner(System.in);
+		//Ingreso de datos
 		System.out.print("Ingrese numero: ");
 		numero=in.nextInt();
+		//Bucle pára comprobar si un nro es primo
 		for(i=1;i<=numero;i++)
 		{
 		    if(numero%i==0)
 		    a++;
 		}
+		//Respuesta positiva
 		if(a==2){
 			System.out.print("El número es primo");
 		}
+		//Respuesta negativa
 		else
 		{
 			System.out.print("El número no es primo");
 		}
-	}}
+	}
+}
