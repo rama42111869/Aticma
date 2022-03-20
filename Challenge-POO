@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class Password {
-
+	///Variables con sus respectivos getters y setters
 	private int longitud;
 	private String contraseña;
 	private char[] charSearchs;
@@ -26,6 +26,7 @@ public class Password {
 	public void setCharSearchs(char[] charSearchs) {
 		this.charSearchs = charSearchs;
 	}
+	///Constructor 1
 	/**
 	 * @param longitud
 	 * @param contraseña
@@ -34,7 +35,8 @@ public class Password {
 		super();
 		this.longitud = longitud;
 		this.contraseña = contraseña;
-	}	
+	}
+	///Constructor 2
 	/**
 	 * @param longitud
 	 * @param contraseña
@@ -46,16 +48,16 @@ public class Password {
 		this.contraseña = contraseña;
 		this.charSearchs = charSearchs;
 	}
-
+		///Funcion main
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub   
+		//Variables 
         int big=0,small=0,num=0;
 		Scanner in=new Scanner(System.in);
 		System.out.println("\nIngrese contraseña");
 		String str2 = null;
 		String str = in.next();
-		System.out.println("Longitud: "+str.length());
-        for(int i=0;i<str.length();i++){
+        ///Bucle para comprobar si la clave tiene mayusculas,minusculas y nros.
+	for(int i=0;i<str.length();i++){
             if(str.charAt(i)<='z'&&str.charAt(i)>='a'){
                 small++;
             }
@@ -66,9 +68,11 @@ public class Password {
                 num++;
             }
         }
+	///Luego de la comprobacion se pide que la vuelva a confirmar
+			str=str2;
 			System.out.println("\nConfirme su contraseña");
 			str2= in.next();
-	         // última salida
+	         // última salida: Aqui se revisan las condiciones para que una contraseña sea fuerte
 	          if(big>2 && small>1 && num>3) {
 	        	  boolean estado=true;
 	              System.out.println("ES FUERTE!!!"+estado);
@@ -76,10 +80,6 @@ public class Password {
 	          else {
 	        	  boolean estado=false;
 	        	  System.out.println("NO ES FUERTE"+estado);
-	          } 
-			System.out.println("Longitud: "+str2.length());	
-			if(str2.length()==8){
-				str=str2;		
-			}
+	          } 		
 		}   
 	}
