@@ -1,0 +1,46 @@
+import java.util.Random;
+import java.util.Scanner;
+
+public class Main {
+
+	private static Scanner in;
+
+	public static void main(String[] args) {
+
+		int numero = 0,a=0,i=0,total;
+		String contraseña,contraseña2,nombre;
+		in = new Scanner(System.in);	
+		///Ejercicio 2
+		
+		System.out.println("Ingrese contraseña");
+		contraseña=in.next();
+		for(int y=0; y<20; y++) {
+			System.out.print("\n");
+		for(int x=0; x<20; x++) {
+			System.out.print(1+"\t");
+		}
+		}
+		System.out.println("\nIngrese otra vez la contraseña");
+		contraseña2=in.next();
+		if(contraseña.equals(contraseña2)) {
+		System.out.println("Felicitaciones, recordas tu contraseña");
+		}
+		else {
+			System.out.println("Error. Ingrese otra vez la contraseña");
+			contraseña2=in.next();
+			if(contraseña.equals(contraseña2)) {
+			System.out.println("Felicitaciones, recordas tu contraseña");
+			}
+			else {
+				System.out.println("Error. Ingrese otra vez la contraseña");
+				contraseña2=in.next();
+				if(contraseña.equals(contraseña2)) {
+				System.out.println("Felicitaciones, recordas tu contraseña");
+				}
+				else {
+					System.out.println("Tenes que ejercitar la memoria ");
+				}
+			}
+		}
+	}
+}
