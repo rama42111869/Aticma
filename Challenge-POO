@@ -1,0 +1,85 @@
+import java.util.Scanner;
+
+public class Password {
+
+	private int longitud;
+	private String contraseña;
+	private char[] charSearchs;
+
+	public int getLongitud() {
+		return longitud;
+	}
+
+	public void setLongitud(int longitud) {
+		this.longitud = longitud;
+	}
+	
+	public String getContraseña() {
+		return contraseña;
+	}
+
+	
+	public char[] getCharSearchs() {
+		return charSearchs;
+	}
+
+	public void setCharSearchs(char[] charSearchs) {
+		this.charSearchs = charSearchs;
+	}
+	/**
+	 * @param longitud
+	 * @param contraseña
+	 */
+	public Password(int longitud, String contraseña) {
+		super();
+		this.longitud = longitud;
+		this.contraseña = contraseña;
+	}	
+	/**
+	 * @param longitud
+	 * @param contraseña
+	 * @param charSearchs
+	 */
+	public Password(int longitud, String contraseña, char[] charSearchs) {
+		super();
+		this.longitud = 8;
+		this.contraseña = contraseña;
+		this.charSearchs = charSearchs;
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub   
+        int big=0,small=0,num=0;
+		Scanner in=new Scanner(System.in);
+		System.out.println("\nIngrese contraseña");
+		String str2 = null;
+		String str = in.next();
+		System.out.println("Longitud: "+str.length());
+        for(int i=0;i<str.length();i++){
+            if(str.charAt(i)<='z'&&str.charAt(i)>='a'){
+                small++;
+            }
+            else if(str.charAt(i)>='A'&&str.charAt(i)<='Z'){
+                big++;
+            }
+            else if(str.charAt(i)>='0'&&str.charAt(i)<='9'){
+                num++;
+            }
+        }
+			System.out.println("\nConfirme su contraseña");
+			str2= in.next();
+	         // última salida
+	          if(big>2 && small>1 && num>3) {
+	        	  boolean estado=true;
+	              System.out.println("ES FUERTE!!!"+estado);
+	          }
+	          else {
+	        	  boolean estado=false;
+	        	  System.out.println("NO ES FUERTE"+estado);
+	          } 
+			System.out.println("Longitud: "+str2.length());	
+			if(str2.length()==8){
+				str=str2;		
+			}
+		}   
+	}
