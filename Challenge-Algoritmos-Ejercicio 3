@@ -1,0 +1,32 @@
+import java.util.Random;
+import java.util.Scanner;
+
+public class Main {
+
+	private static Scanner in;
+
+	public static void main(String[] args) {
+
+		int numero = 0,a=0,i=0,total;
+		String contraseña,contraseña2,nombre;
+		in = new Scanner(System.in);
+		System.out.println("Ingrese valor hora");
+		numero=in.nextInt();
+		System.out.println("\nIngrese nombre del empleado");
+		nombre=in.next();
+		System.out.println("\nIngrese años de antigüedad");
+		a=in.nextInt();
+		System.out.println("\nIngrese cant. de horas trabajadas");
+		i=in.nextInt();
+		if(a>10) {
+		System.out.println("\nTotal= (valor hora x cant. de horas trabajadas)+antigüedad x 30");			
+		total = (numero*i)+a*30;
+		System.out.println("\nDatos del empleado: "+"\nNombre: "+nombre+"\n"+"Años de antigüedad: "+a+"\n"+"Total a cobrar: "+total);
+		}
+		else{
+		System.out.println("\nTotal= valor hora x cant. de horas trabajadas");
+		total = (numero*i);
+		System.out.println("\nDatos del empleado: "+"\nNombre: "+nombre+"\n"+"Años de antigüedad: "+a+"\n"+"Total a cobrar: "+total);
+		}
+	}
+}
