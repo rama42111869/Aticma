@@ -1,0 +1,117 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct{
+    char nombre[30];
+    char apellido[30];
+    int telefono;
+    char mail[30];
+    int salario;
+    int antiguedad;
+    char puesto[30];
+}Empleado;
+
+int main()
+{
+    Empleado empleado;
+    int n;
+    char archivo[]= {"Empleado.sql"};
+    printf("Cuantos empleados desea ingresar\t");
+    fflush(stdin);
+    scanf("%d",&n);
+    int b=cargarEmpleados(empleado,n);
+    cargaEmpleadosConArreglo(archivo,empleado,b);
+    muestraEmpleados(archivo);
+    return 0;
+}
+
+
+///funcion para cargar el arreglo con archivos hasta que yo quiera
+int cargarEmpleados(Empleado e[], int dimension)
+{
+    int i=0;
+    char letra ='s';
+    printf("\n\nIngrese empleados\n");
+    while(letra=='s'&&i<dimension)
+    {
+        puts("\n----------------------------------");
+        printf("\n Ingrese nombre: ");
+        fflush(stdin);
+        gets(e[i].nombre);
+        printf("\n Ingrese apellido: ");
+        fflush(stdin);
+        gets(e[i].apellido);
+        printf("\n Ingrese puesto: ");
+        fflush(stdin);
+        gets(e[i].puesto);
+        printf("\n Ingrese antiguedad: ");
+        scanf("%d", &e[i].antiguedad);
+        printf("\n Ingrese salario: ");
+        scanf("%d", &e[i].salario);
+        printf("\n Ingrese E-mail: ");
+        fflush(stdin);
+        gets(e[i].mail);
+        printf("\n Ingrese telefono: ");
+        scanf("%d", &e[i].telefono);
+        puts("\n----------------------------------");
+        i++;
+        printf("\n Seguis?: ");
+        fflush(stdin);
+        scanf("%c", &letra);
+    }
+    return i;
+}
+
+///Recibir como parámetro un arreglo de tipo Empleado y lo copiarlo al archivo.
+void cargaEmpleadosConArreglo(char archivo[], Empleado arregloEmpleado[], int cant)
+{
+    FILE *archi;
+    int i=0;
+    archi=fopen(archivo,"ab");
+    if(archi!=NULL)
+    {
+        i=fwrite(arregloEmpleado,sizeof(Empleado),cant,archi);
+        fclose(archi);
+        printf("Cantidad de registros grabados: %d",i);
+    }
+}
+
+///Funcion mostrar estructura
+void mostrarEmpleado(Empleado a)
+{
+    puts("\n---------------------------------------");
+    printf("\nNombre: %s\t",a.nombre);
+    printf("\nApellido: %s\t",a.apellido);
+    printf("\nPuesto: %s\t",a.puesto);
+    printf("\nMail: %s\t",a.mail);
+    printf("\nAntiguedad: %d\t",a.antiguedad);
+    printf("\nSalario: %d\t",a.salario);
+    printf("\nTelefono: %d\t",a.telefono);
+    puts("\n---------------------------------------");
+}
+
+
+///funcion mostrar archivo bajo las condiciones estipuladas
+void muestraEmpleados(char nombre_archivo[])
+{
+    FILE * archi;
+    Empleado a;
+    archi=fopen(nombre_archivo, "r+b");
+    int rta=0;
+    if(archi!=NULL)
+    {
+        while(!feof(archi))
+        {
+            fread(&a,sizeof(Empleado),1,archi);
+            if(!feof(archi))
+            {
+                if((a.salario>70000)&&(a.antiguedad<=15) && (a.antiguedad>=10))
+                {
+                    mostrarEmpleado(a);
+                }
+            }
+        }
+        fclose(archi);
+    }
+    return rta;
+}
