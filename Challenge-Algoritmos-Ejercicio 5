@@ -1,0 +1,80 @@
+#include <windows.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(int argc, char *argv[])
+{
+    int arr[100];
+    int num;
+    int i=0;
+    int val=cargararreglo(arr,10);
+    sumaarreglo(arr,10);
+return 0;
+}
+
+///funcion para cargar un arreglo
+int cargararreglo(int arr[],int validos)
+{
+    int num,val=0,i=0;
+    for(i; i<validos; i++)
+    {
+        printf("ingrese un nro\t");
+        fflush(stdin);
+        scanf("%d",&num);
+        arr[i]=num;
+        val++;
+    }
+    return val;
+}
+
+///funcion para buscar el menor
+int buscarmenor(int arr[],int pos,int val)
+{
+    int menor=arr[pos];
+    int posmenor=pos;
+    int index=pos+1;
+    while(index<val)
+    {
+        if(menor>arr[index])
+        {
+            menor=arr[index];
+            posmenor=index;
+        }
+        index++;
+    }
+    return menor;
+}
+
+///funcion para buscar el mayor
+int buscarmayor(int arr[],int pos,int val)
+{
+    int mayor=arr[pos];
+    int posmayor=pos;
+    int index=pos+1;
+    while(index<val)
+    {
+        if(mayor<arr[index])
+        {
+            mayor=arr[index];
+            posmayor=index;
+        }
+        index++;
+    }
+    return mayor;
+}
+
+///funcion para sumar los elementos de un arreglo
+void sumaarreglo(int arr[],int validos)
+{
+    int suma=0;
+    for(int i=0; i<validos; i++)
+    {
+        suma+=arr[i];
+    }
+    int a=buscarmayor(arr,0,10);
+    printf("\nEl nro mayor es [%d] ",a);
+    int b=buscarmenor(arr,0,10);
+    printf("\nEl nro menor es [%d] ",b);
+    printf("\nLa suma de los elementos ingresados es= %d",suma);
+    printf("\nLa suma de los elementos totales es= %d",suma+a+b);
+}
