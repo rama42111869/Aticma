@@ -1,6 +1,9 @@
+//Tuve problemas con la base de datos y no me dejaba vincularla a java. Termine haciendo todo en C.
+//Librerias
 #include <stdio.h>
 #include <stdlib.h>
 
+///Estructura con las variables pertenecientes a la base de datos
 typedef struct{
     char nombre[30];
     char apellido[30];
@@ -11,14 +14,17 @@ typedef struct{
     char puesto[30];
 }Empleado;
 
+///Main
 int main()
 {
+    ///Variables 
     Empleado empleado;
     int n;
     char archivo[]= {"Empleado.sql"};
     printf("Cuantos empleados desea ingresar\t");
     fflush(stdin);
     scanf("%d",&n);
+    ///Funciones
     int b=cargarEmpleados(empleado,n);
     cargaEmpleadosConArreglo(archivo,empleado,b);
     muestraEmpleados(archivo);
@@ -26,7 +32,7 @@ int main()
 }
 
 
-///funcion para cargar el arreglo con archivos hasta que yo quiera
+///funcion para cargar los datos de los empleados en una estructura para pasarla por parametro mas adelante
 int cargarEmpleados(Empleado e[], int dimension)
 {
     int i=0;
@@ -62,7 +68,7 @@ int cargarEmpleados(Empleado e[], int dimension)
     return i;
 }
 
-///Recibir como parámetro un arreglo de tipo Empleado y lo copiarlo al archivo.
+///Recibir como parámetro un arreglo de tipo Empleado y copiarlo al archivo.
 void cargaEmpleadosConArreglo(char archivo[], Empleado arregloEmpleado[], int cant)
 {
     FILE *archi;
@@ -76,9 +82,10 @@ void cargaEmpleadosConArreglo(char archivo[], Empleado arregloEmpleado[], int ca
     }
 }
 
-///Funcion mostrar estructura
+///Funcion auxiliar mostrar estructura, perteneciente a la funcion principal
 void mostrarEmpleado(Empleado a)
 {
+///Datos del empleado
     puts("\n---------------------------------------");
     printf("\nNombre: %s\t",a.nombre);
     printf("\nApellido: %s\t",a.apellido);
@@ -98,13 +105,16 @@ void muestraEmpleados(char nombre_archivo[])
     Empleado a;
     archi=fopen(nombre_archivo, "r+b");
     int rta=0;
+    ///Si el archivo no es nulo
     if(archi!=NULL)
     {
+    ///Mientras no sea el fin del archivo se repetira las condiciones del bucle
         while(!feof(archi))
         {
             fread(&a,sizeof(Empleado),1,archi);
             if(!feof(archi))
             {
+            ///Bajo la condicion siguiente solo se mostraran aquellos empleados que cumplan con las condiciones establecidas
                 if((a.salario>70000)&&(a.antiguedad<=15) && (a.antiguedad>=10))
                 {
                     mostrarEmpleado(a);
