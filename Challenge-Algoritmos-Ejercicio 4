@@ -1,0 +1,31 @@
+import java.util.Random;
+import java.util.Scanner;
+
+public class Main {
+
+	private static Scanner in;
+
+	public static void main(String[] args) {
+
+		int numero = 0,a=0,i=0,total;
+		String contraseña,contraseña2,nombre;
+		in = new Scanner(System.in);
+		int min=0,max=1000;
+		Random random=new Random();
+		a=random.nextInt(max+min)+min;
+		System.out.println("\nIntente adivinar el nro del 0 al 1000");
+		i=in.nextInt();
+		while(a!=i){
+			System.out.println("\nIntente adivinar el nro del 0 al 1000");
+			i=in.nextInt();
+			if(i>a) {
+				System.out.println("\n Es mayor");
+			}
+			else if(i<a) {
+				System.out.println("\n Es menor");
+			}
+		}
+		System.out.println("Acertaste");
+			
+		}
+}
