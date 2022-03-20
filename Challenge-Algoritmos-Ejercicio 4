@@ -6,18 +6,21 @@ public class Main {
 	private static Scanner in;
 
 	public static void main(String[] args) {
-
+		//Variables
 		int numero = 0,a=0,i=0,total;
 		String contraseña,contraseña2,nombre;
 		in = new Scanner(System.in);
 		int min=0,max=1000;
+		///Preparamos el nro random entre el 0 y el 1000
 		Random random=new Random();
 		a=random.nextInt(max+min)+min;
+		///Aqui el usuario entrara en un bucle y solo saldra si adivina el numero
 		System.out.println("\nIntente adivinar el nro del 0 al 1000");
 		i=in.nextInt();
 		while(a!=i){
 			System.out.println("\nIntente adivinar el nro del 0 al 1000");
 			i=in.nextInt();
+			///Aqui se le dira si el nro que ingreso es mayor o menor; a travez de una comparacion entre estos 2
 			if(i>a) {
 				System.out.println("\n Es mayor");
 			}
@@ -25,7 +28,7 @@ public class Main {
 				System.out.println("\n Es menor");
 			}
 		}
-		System.out.println("Acertaste");
-			
+		//En caso de que acierte se le informara
+		System.out.println("Acertaste");	
 		}
 }
